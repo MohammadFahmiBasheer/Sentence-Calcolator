@@ -40,3 +40,6 @@ iframe{
 .btn-warning{
   min-width: 240px;
 }
+a:hover{
+  text-decoration: none;
+}
