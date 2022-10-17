@@ -4,13 +4,41 @@
   "description": "This is a website for Ristorante Con Fusion",
   "main": "index.html",
   "scripts": {
-    "start": "npm run lite",
+    "start": "npm run watch:all",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lite": "lite-server"
+    "lite": "lite-server",
+    "scss": "node-sass -o css/ css/",
+    "watch:scss": "onchange \"css/*.scss\" -- npm run scss",
+    "watch:all": "parallelshell \"npm run watch:scss\" \"npm run lite\"",
+    "clean": "rimraf dist",
+    "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
+    "imagemin": "imagemin img/* --out-dir='dist/img'",
+    "usemin": "usemin asf1.html -d dist --htmlmin -o dist/asf1.html && usemin asf2.html -d dist --htmlmin -o dist/asf2.html && usemin asf3.html -d dist --htmlmin -o dist/asf3.html && usemin asf4.html -d dist --htmlmin -o dist/asf4.html && usemin index.html -d dist --htmlmin -o dist/index.html",
+    "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run usemin"
   },
-  "author": "",
+  "author": "Mohammad Fahmi Basheer",
   "license": "ISC",
-    "devDependencies": {
-    "lite-server": "^2.3.0"
+  "devDependencies": {
+    "cssmin": "^0.4.3",
+    "htmlmin": "^0.0.7",
+    "lite-server": "^2.6.1",
+    "onchange": "^7.1.0",
+    "parallelshell": "^3.0.2",
+    "rimraf": "^3.0.2",
+    "uglifyjs": "^2.4.11",
+    "usemin-cli": "^0.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohammadFahmiBasheer/Sentence-Calcolator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MohammadFahmiBasheer/Sentence-Calcolator/issues"
+  },
+  "homepage": "https://github.com/MohammadFahmiBasheer/Sentence-Calcolator#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.12.9"
   }
 }
